@@ -13,8 +13,7 @@ export function vertexBufferGen(device) {
 	const buffer = device.createBuffer({
 		label: 'screen polygon vertices',
 		size : array.byteLength,
-		usage: GPUBufferUsage.VERTEX
-			 | GPUBufferUsage.COPY_DST,
+		usage: GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST,
 	});
 
 	device.queue.writeBuffer(buffer, 0, array);

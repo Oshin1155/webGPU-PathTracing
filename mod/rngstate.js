@@ -17,8 +17,7 @@ export function rngStateBufferGen(device, width, height) {
 	const buffer = device.createBuffer({
 		label: 'RNG state storage',
 		size : seedArray.byteLength,
-		usage: GPUBufferUsage.STORAGE
-			 | GPUBufferUsage.COPY_DST
+		usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST
 	});
 
 	device.queue.writeBuffer(buffer, 0, seedArray);

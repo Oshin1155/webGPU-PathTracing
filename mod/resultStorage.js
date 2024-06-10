@@ -12,8 +12,7 @@ export function resultBufferGen(device, width, height) {
 	const buffer = device.createBuffer({
 		label: 'result storage',
 		size : array.byteLength,
-		usage: GPUBufferUsage.STORAGE
-			 | GPUBufferUsage.COPY_DST
+		usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST
 	});
 
 	device.queue.writeBuffer(buffer, 0, array);

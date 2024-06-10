@@ -7,8 +7,7 @@ export function uniformBufferGen(device) {
 	const buffer = device.createBuffer({
 		label: 'uniforms',
 		size : array.byteLength,
-		usage: GPUBufferUsage.UNIFORM
-			 | GPUBufferUsage.COPY_DST
+		usage: GPUBufferUsage.UNIFORM| GPUBufferUsage.COPY_DST
 	});
 
 	device.queue.writeBuffer(buffer, 0, array);

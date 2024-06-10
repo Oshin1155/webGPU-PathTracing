@@ -66,15 +66,13 @@ export function sceneBufferGen(device) {
 	const primitiveBuffer = device.createBuffer({
 		label: 'primitives',
 		size : primitiveArray.byteLength,
-		usage: GPUBufferUsage.STORAGE
-			 | GPUBufferUsage.COPY_DST
+		usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST
 	});
 
 	const materialBuffer  = device.createBuffer({
 		label: 'materials',
 		size : materialArray.byteLength,
-		usage: GPUBufferUsage.STORAGE
-			 | GPUBufferUsage.COPY_DST
+		usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST
 	});
 
 	device.queue.writeBuffer(primitiveBuffer, 0, primitiveArray);

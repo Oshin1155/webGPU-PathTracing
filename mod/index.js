@@ -11,8 +11,7 @@ export function indexBufferGen(device) {
 	const buffer = device.createBuffer({
 		label: 'screen polygon indices',
 		size : array.byteLength,
-		usage: GPUBufferUsage.INDEX
-			 | GPUBufferUsage.COPY_DST
+		usage: GPUBufferUsage.INDEX | GPUBufferUsage.COPY_DST
 	});
 
 	device.queue.writeBuffer(buffer, 0, array);
