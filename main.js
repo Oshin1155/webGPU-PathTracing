@@ -3,7 +3,7 @@ import { vertexBufferGen   } from './mod/vertex.js';
 import { indexBufferGen    } from './mod/index.js';
 import { pipelineGen       } from './mod/pipeline.js';
 import { uniformBufferGen,
-		 updateUniform     } from './mod/uniform.js';
+         updateUniform     } from './mod/uniform.js';
 import { rngStateBufferGen } from './mod/rngstate.js';
 import { resultBufferGen   } from './mod/resultStorage.js';
 import { sceneBufferGen    } from './mod/scene.js';
@@ -33,9 +33,9 @@ async function main() {
 	const {pipeline} = await pipelineGen(device, vertexBufferLayout, format);
 
 	// bind group components @binding(0) - @binding(4)
-	const {uniformBuffer} = uniformBufferGen(device);
+	const {uniformBuffer}  = uniformBufferGen(device);
 	const {rngStateBuffer} = rngStateBufferGen(device, width, height);
-	const {resultBuffer} = resultBufferGen(device, width, height);
+	const {resultBuffer}   = resultBufferGen(device, width, height);
 	const {primitiveBuffer, materialBuffer, primitiveNumber} = sceneBufferGen(device);
 
 	// bind group settings
