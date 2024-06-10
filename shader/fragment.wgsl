@@ -27,11 +27,11 @@ struct Uniforms {
 }                               //size(20) bytes total
 
 struct Primitive {
-	id		: u32, // offset( 0)  size( 4)
-	shape	: u32, // offset( 4)  size( 4)
+	id      : u32, // offset( 0)  size( 4)
+	shape   : u32, // offset( 4)  size( 4)
 	material: u32, // offset( 8)  size( 4)
 	// padding     // offset(12)  size( 4)
-	v0: vec3f,	   // offset(16)  size(12)
+	v0: vec3f,     // offset(16)  size(12)
 	// padding     // offset(28)  size( 4)
 	v1: vec3f,     // offset(32)  size(12)
 	// padding     // offset(44)  size( 4)
@@ -40,7 +40,7 @@ struct Primitive {
 }                               //size(64) bytes total
 
 struct Material {
-	brdf  : u32,	// offset( 0)  size( 4)
+	brdf  : u32,    // offset( 0)  size( 4)
 	fuzz  : f32,    // offset( 4)  size( 4)
 	ri    : f32,    // offset( 8)  size( 4)
 	// padding      // offset(12)  size( 4)
