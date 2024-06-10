@@ -16,10 +16,13 @@ import { updateFrame       } from './mod/manager.js';
 // execute rendering
 window.addEventListener('DOMContentLoaded', main);
 
-
 async function main() {
+	await render();
+}
+
+async function render(MAX_SAMPLES = 600) {
 	// samples per pixel
-	const MAX_SPP = 20000;
+	const MAX_SPP = MAX_SAMPLES;
 	let       SPP = 0;
 
 	// initialize webGPU
