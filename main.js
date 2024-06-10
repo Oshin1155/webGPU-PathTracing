@@ -6,7 +6,8 @@ import { uniformBufferGen,
          updateUniform     } from './mod/uniform.js';
 import { rngStateBufferGen } from './mod/rngstate.js';
 import { resultBufferGen   } from './mod/resultStorage.js';
-import { sceneBufferGen    } from './mod/scene.js';
+import { setScene          } from './mod/scene.js';
+import { bindGroupGen      } from './mod/bindgroup.js';
 import { updateFrame       } from './mod/manager.js';
 
 
@@ -36,25 +37,10 @@ async function main() {
 	const {uniformBuffer}  = uniformBufferGen(device);
 	const {rngStateBuffer} = rngStateBufferGen(device, width, height);
 	const {resultBuffer}   = resultBufferGen(device, width, height);
-	const {primitiveBuffer, materialBuffer, primitiveNumber} = sceneBufferGen(device);
+	const {primitiveBuffer, materialBuffer, primitiveNumber} = setScene(device);
 
 	// bind group settings
-	const bindGroup = device.createBindGroup({
-		label  : 'my bind group',
-		layout : pipeline.getBindGroupLayout(0), // @group(0)
-		entries: [
-			// @binding(0)
-			{binding: 0, resource: {buffer: uniformBuffer  }},
-			// @binding(1)
-			{binding: 1, resource: {buffer: rngStateBuffer }},
-			// @binding(2)
-			{binding: 2, resource: {buffer: resultBuffer   }},
-			// @binding(3)
-			{binding: 3, resource: {buffer: primitiveBuffer}},
-			// @binding(4)
-			{binding: 4, resource: {buffer: materialBuffer }},
-		],
-	});
+	const {bindGroup} = bindGroupGen(device, pipeline, uniformBuffer, rngStateBuffer, resultBuffer, primitiveBuffer, materialBuffer);
 
 
 	// render bundle

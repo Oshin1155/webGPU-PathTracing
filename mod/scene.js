@@ -1,7 +1,7 @@
 //===============================================================
 // scene storage buffer
 //===============================================================
-export function sceneBufferGen(device) {
+export function setScene(device) {
 	// scene settings
 	const cornelBoxScene = new Scene();
 
@@ -48,7 +48,7 @@ export function sceneBufferGen(device) {
 
 		(new GeometryBuilder())
 		.color(1.0, 1.0, 1.0)
-		.glass(1.6)
+		.glass(1.8)
 		.sphere(-0.3, -0.5, -0.3, 0.5)
 		.build(),
 
