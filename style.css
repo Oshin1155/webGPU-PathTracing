@@ -1,0 +1,24 @@
+body {
+	margin : 0;
+	padding: 0;
+	background-color: rgb(20, 20, 25);
+}
+
+canvas {
+	display : block;
+	margin  : auto;
+	position: absolute;
+	top   : 0;
+	right : 0;
+	left  : 0;
+	bottom: 0;
+}
+
+#frame_rate_display {
+	width : 80px;
+	height: 45px;
+	font-size: 15px;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.6);
+	position: relative;
+}
