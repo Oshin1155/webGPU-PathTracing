@@ -54,9 +54,9 @@ export function setScene(device) {
 
 		// light
 		(new GeometryBuilder())
-		.light(15, 15, 15)
+		.light(20, 20, 20)
 		.lambertian()
-		.planeXZ(-0.25, 0.999, -0.25, 0.5, 0.5)
+		.planeXZ(-0.2, 0.99, -0.2, 0.4, 0.4)
 		.build()
 	);
 

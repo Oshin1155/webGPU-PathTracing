@@ -7,7 +7,7 @@ const kPI_INV  : f32 = 0.31830989;
 const kPI2_INV : f32 = 0.15915494;
 const kINF     : f32 = 1e+20f;
 const kEPS     : f32 = 1e-4f;
-const kGAMMA   : f32 = 1.0; // this is unnecessary
+const kGAMMA   : f32 = 1.0; // need not correct gamma
 const MAX_DEPTH: u32 = 50;
 //=============================================================================
 
@@ -411,10 +411,10 @@ fn fs_main(@builtin(position) pos: vec4f) -> @location(0) vec4f {
 
 	// camera
 	let camera = set_camera(
-		vec3f(0.0, 0.0, 6.0),
+		vec3f(0.0, 0.5, 5.0),
 		vec3f(0.0, 0.0, 0.0),
 		vec3f(0.0, 1.0, 0.0),
-		25.0
+		30.0
 	);
 
 	// compute color

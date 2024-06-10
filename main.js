@@ -60,12 +60,13 @@ async function main() {
 
 
 	// render loop
-	const render = () => {
+	const loop = () => {
 		// update uniforms
 		SPP++;
 		updateFrame(SPP, MAX_SPP);
 		updateUniform(device, uniformBuffer, startTime, width, height, primitiveNumber, SPP);
 
+		// render settings
 		const encoder = device.createCommandEncoder();
 		const pass    = encoder.beginRenderPass({
 			colorAttachments: [{
@@ -75,16 +76,12 @@ async function main() {
 				view      : context.getCurrentTexture().createView(),
 			}]
 		});
-
-		//===== commands =====
 		pass.executeBundles([renderBundle]);
 		pass.end();
-		//===== commands =====
-
 		device.queue.submit([encoder.finish()]);
 
-		if (SPP < MAX_SPP) window.requestAnimationFrame(render);
+		if (SPP < MAX_SPP) window.requestAnimationFrame(loop);
 	}
 
-	render();
+	loop();
 }
