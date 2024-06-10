@@ -24,7 +24,7 @@ struct Uniforms {
 	y  : f32,      // offset( 8)  size( 4)
 	n  : f32,      // offset(12)  size( 4)
 	spp: f32,      // offset(16)  size( 4)
-}						        //size(20) bytes total
+}                               //size(20) bytes total
 
 struct Primitive {
 	id		: u32, // offset( 0)  size( 4)
@@ -37,7 +37,7 @@ struct Primitive {
 	// padding     // offset(44)  size( 4)
 	v2: vec3f,     // offset(48)  size(12)
 	// padding     // offset(60)  size( 4)
-}								//size(64) bytes total
+}                               //size(64) bytes total
 
 struct Material {
 	brdf  : u32,	// offset( 0)  size( 4)
@@ -46,7 +46,7 @@ struct Material {
 	// padding      // offset(12)  size( 4)
 	albedo: vec3f,  // offset(16)  size(12)
 	// padding      // offset(28)  size( 4)
-}								 //size(32) bytes total
+}                                //size(32) bytes total
 
 @group(0) @binding(0)
 var<uniform> uniforms: Uniforms;
