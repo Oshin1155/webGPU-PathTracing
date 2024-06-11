@@ -1,8 +1,8 @@
 //===============================================================
 // uniform buffer settings (must set to bindgroup)
 //===============================================================
-export function uniformBufferGen(device) {
-	const array = new Float32Array([0, 0, 0, 0, 0]);
+export function uniformBufferGen(device, width, height) {
+	const array = new Float32Array([0, width, height, 0, 0]);
 
 	const buffer = device.createBuffer({
 		label: 'uniforms',

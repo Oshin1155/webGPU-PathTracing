@@ -16,30 +16,33 @@ import { updateFrame       } from './mod/manager.js';
 // execute rendering
 window.addEventListener('DOMContentLoaded', main);
 
-async function main() {
-	await render();
+
+
+function main() {
+	render(3000);
 }
 
-async function render(MAX_SAMPLES = 600) {
+
+
+async function render(MAX_SPP = 600) {
 	// samples per pixel
-	const MAX_SPP = MAX_SAMPLES;
-	let       SPP = 0;
+	let SPP = 0;
 
 	// initialize webGPU
 	const startTime = performance.now();
-	const {device, width, height, format, context} = await initialize(1280, 720);
+	const {device, width, height, context} = await initialize(1280, 720);
 
 	// vertex & index buffer
 	const {vertexBuffer, vertexBufferLayout} = vertexBufferGen(device);
 	const {indexBuffer , indexNumber       } =  indexBufferGen(device);
 
 	// rendering pipeline
-	const {pipeline} = await pipelineGen(device, vertexBufferLayout, format);
+	const {pipeline} = await pipelineGen(device, vertexBufferLayout);
 
 	// bind group components @binding(0) - @binding(4)
-	const {uniformBuffer}  = uniformBufferGen(device);
+	const {uniformBuffer}  =  uniformBufferGen(device, width, height);
 	const {rngStateBuffer} = rngStateBufferGen(device, width, height);
-	const {resultBuffer}   = resultBufferGen(device, width, height);
+	const {resultBuffer}   =   resultBufferGen(device, width, height);
 	const {primitiveBuffer, materialBuffer, primitiveNumber} = setScene(device);
 
 	// bind group settings
@@ -48,7 +51,7 @@ async function render(MAX_SAMPLES = 600) {
 
 	// render bundle
 	const buildRenderBundle = () => {
-		const descriptor = {colorFormats: [format]};
+		const descriptor = {colorFormats: [navigator.gpu.getPreferredCanvasFormat()]};
 		const encoder    = device.createRenderBundleEncoder(descriptor);
 		//===== commands =====
 		encoder.setPipeline(pipeline);

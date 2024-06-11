@@ -21,7 +21,6 @@ export async function initialize(width = 800, height = 600) {
 		device : device,
 		width  : width,
 		height : height,
-		format : canvasFormat,
 		context: webgpuContext,
 	};
 }

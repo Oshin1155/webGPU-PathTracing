@@ -1,7 +1,7 @@
 //===============================================================
 // gpu render pipeline
 //===============================================================
-export async function pipelineGen(device, layout, format) {
+export async function pipelineGen(device, layout) {
 	const loadModuleFrom = async path => {
 		const res = await fetch(path);
 		const src = await res.text();
@@ -25,7 +25,7 @@ export async function pipelineGen(device, layout, format) {
 		fragment: {
 			module    : fragmentModule,
 			entryPoint: 'fs_main',
-			targets   : [{format: format}],
+			targets   : [{format: navigator.gpu.getPreferredCanvasFormat()}],
 		}
 	};
 
